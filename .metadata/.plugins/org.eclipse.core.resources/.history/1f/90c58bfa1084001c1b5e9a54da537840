@@ -1,0 +1,13 @@
+package com.example.demo.service;
+
+import com.example.demo.model.Employee;
+
+public interface servicGGG {
+public Employee add(Employee emp);
+
+public Employee inserting(Employee employee);
+
+public void delete(Employee emp);
+
+Employee remove(int id);
+}

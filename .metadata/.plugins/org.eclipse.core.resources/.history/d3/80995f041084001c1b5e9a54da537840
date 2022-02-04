@@ -1,0 +1,44 @@
+package com.example.demo.springcontroller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.Employee;
+import com.example.demo.service.servicGGG;
+import com.example.demo.service.serviceG;
+
+@RestController
+@RequestMapping("/api/v1")
+public class MyController {
+	@Autowired
+	servicGGG s;
+
+	@PostMapping("/in")
+	public ResponseEntity<Employee> meth(@RequestBody Employee employee){
+		Employee emp=s.inserting(employee);
+		return new ResponseEntity<Employee>(emp,HttpStatus.OK);
+		
+	}
+	@PostMapping("/addd")
+	public ResponseEntity<Employee> insertEmp(@RequestBody Employee emp){
+		Employee e=s.add(emp);
+		
+		return new ResponseEntity<Employee>(e,HttpStatus.OK);
+		
+	}
+	@PostMapping("/del")
+	public ResponseEntity<Employee> dell(@RequestParam int id){
+		Employee remove1 = s.remove(id);
+		return new ResponseEntity<Employee>(remove1,HttpStatus.OK);
+		
+	}
+	
+	
+	
+}
